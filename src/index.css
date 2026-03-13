@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 25% 98%;
+    --foreground: 222 28% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 28% 12%;
+    --primary: 192 96% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 95%;
+    --secondary-foreground: 222 28% 12%;
+    --muted: 210 18% 93%;
+    --muted-foreground: 220 11% 42%;
+    --accent: 194 85% 92%;
+    --accent-foreground: 222 28% 12%;
+    --destructive: 0 72% 53%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 18% 86%;
+    --input: 214 18% 88%;
+    --ring: 192 96% 47%;
+    --radius: 1.25rem;
+    --sidebar-background: 210 25% 98%;
+    --sidebar-foreground: 222 28% 12%;
+    --sidebar-primary: 192 96% 47%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 210 18% 93%;
+    --sidebar-accent-foreground: 222 28% 12%;
+    --sidebar-border: 214 18% 86%;
+    --sidebar-ring: 192 96% 47%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(34, 211, 238, 0.08), transparent 26%),
+      radial-gradient(circle at top right, rgba(15, 23, 42, 0.06), transparent 24%);
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-kicker {
+    @apply inline-flex items-center rounded-full border border-border bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground backdrop-blur;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-foreground md:text-5xl;
+  }
+
+  .section-copy {
+    @apply text-base leading-7 text-muted-foreground md:text-lg;
+  }
+
+  .surface-card {
+    @apply rounded-[24px] border border-border/70 bg-white/80 shadow-[0_18px_60px_-28px_rgba(15,23,42,0.18)] backdrop-blur-sm;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .metric-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-border/80 bg-white px-3 py-2 text-sm font-medium text-foreground shadow-sm;
+  }
+
+  .page-shell {
+    @apply min-h-screen bg-background;
+  }
+
+  .page-section {
+    @apply section-shell py-8;
+  }
+
+  .page-breadcrumb {
+    @apply section-shell py-4 text-sm;
+  }
+
+  .page-breadcrumb-link {
+    @apply text-muted-foreground hover:text-primary;
+  }
+
+  .page-breadcrumb-separator {
+    @apply text-primary/70;
+  }
+
+  .page-title {
+    @apply text-4xl font-semibold tracking-tight text-foreground md:text-5xl;
+  }
+
+  .content-card {
+    @apply rounded-3xl border border-border/70 bg-secondary/35 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)];
+  }
+
+  .content-card-white {
+    @apply rounded-3xl border border-border/70 bg-white shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)];
+  }
+
+  .content-panel {
+    @apply rounded-2xl border border-border/70 bg-white/80;
+  }
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Шаблон заявки на поверку или ремонт</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #0f172a;
+        background: #f8fbfc;
+      }
+
+      .sheet {
+        box-sizing: border-box;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 18mm 16mm;
+        background: #ffffff;
+      }
+
+      h1 {
+        margin: 0 0 12mm;
+        font-size: 22px;
+      }
+
+      .row {
+        margin-bottom: 8mm;
+      }
+
+      .label {
+        font-size: 12px;
+        color: #475569;
+        margin-bottom: 3mm;
+      }
+
+      .line {
+        height: 10mm;
+        border-bottom: 1px solid #94a3b8;
+      }
+
+      .line-lg {
+        height: 26mm;
+        border: 1px solid #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <h1>Заявка на поверку или ремонт средства измерений</h1>
+
+      <div class="row">
+        <div class="label">Наименование организации / ФИО заказчика</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Контактное лицо</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Телефон</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Электронная почта</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Наименование средства измерений</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Тип / модель / заводской номер</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Вид работ: поверка / ремонт</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Описание задачи / неисправности</div>
+        <div class="line-lg"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Дата</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Подпись заказчика</div>
+        <div class="line"></div>
+      </div>
+    </main>
+  </body>
+</html>

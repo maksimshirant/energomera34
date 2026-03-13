@@ -1,0 +1,16 @@
+{
+  "name": "Энергомера34",
+  "short_name": "Энергомера34",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fbfc",
+  "theme_color": "#0ea5c6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
