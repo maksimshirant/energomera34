@@ -147,9 +147,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
     const payload = new FormData();
     payload.append('subject', CONTACT_MODAL_TEXT.subject);
     payload.append('from_name', CONTACT_MODAL_TEXT.fromName);
-    payload.append('Имя:', formData.name.trim());
-    payload.append('Телефон:', formData.phone);
-    payload.append('Сообщение:', formData.message.trim() || CONTACT_MODAL_TEXT.messageFallback);
+    payload.append('message', [
+      `Имя: ${formData.name.trim()}`,
+      `Телефон: ${formData.phone}`,
+      `Сообщение: ${formData.message.trim() || CONTACT_MODAL_TEXT.messageFallback}`,
+    ].join('\n'));
 
     setIsSubmitting(true);
 

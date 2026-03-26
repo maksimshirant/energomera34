@@ -2,7 +2,7 @@ const DEFAULT_ENDPOINT = 'https://api.web3forms.com/submit';
 
 const resolveEndpoint = () => import.meta.env.VITE_FORMS_ENDPOINT || DEFAULT_ENDPOINT;
 
-const resolveKey = () => import.meta.env.VITE_WEB3FORMS_KEY;
+const resolveKey = () => import.meta.env.VITE_WEB3FORMS_KEY?.trim();
 
 type SendFormResult = {
   ok: boolean;
