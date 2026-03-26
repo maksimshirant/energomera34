@@ -1,5 +1,8 @@
 import askurdeImage from '@/assets/optimized/askurde.jpg';
-import repairIllustration from '@/assets/services/repair-illustration.svg';
+
+const repairPhoto = `${import.meta.env.BASE_URL}repair.jpg`;
+const applicationFormPreview = `${import.meta.env.BASE_URL}primer-zayavki.png`;
+const applicationFormFile = `${import.meta.env.BASE_URL}${encodeURIComponent('ЗАЯВКА на поверку.docx')}`;
 
 export interface ServiceItem {
   id: number;
@@ -32,6 +35,7 @@ export interface ServiceItem {
     previewTitle: string;
     previewSubtitle: string;
     previewFields: string[];
+    previewImageHref?: string;
     buttonLabel: string;
     fileHref: string;
     fileName: string;
@@ -47,7 +51,7 @@ export const services: ServiceItem[] = [
       'Выполняем поверку и ремонт средств измерений, включая демонтаж, восстановление работоспособности и последующий монтаж оборудования на объекте.',
     description:
       'Выполняем поверку и ремонт средств измерений, включая демонтаж, восстановление работоспособности и последующий монтаж оборудования на объекте.',
-    image: repairIllustration,
+    image: repairPhoto,
     bullets: [
       'Демонтаж оборудования перед проведением ремонта',
       'Восстановление работоспособности средств измерений',
@@ -113,9 +117,10 @@ export const services: ServiceItem[] = [
         'Тип, модель и серийный номер',
         'Вид работ и описание задачи',
       ],
-      buttonLabel: 'Скачать шаблон заявки',
-      fileHref: '/templates/zayavka-shablon.html',
-      fileName: 'shablon-zayavki-energomera34.html',
+      previewImageHref: applicationFormPreview,
+      buttonLabel: 'Скачать заявку на поверку',
+      fileHref: applicationFormFile,
+      fileName: 'Заявка на поверку.docx',
     },
   },
   {

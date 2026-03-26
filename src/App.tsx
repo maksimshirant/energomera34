@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const ContactModal = lazy(() => import('@/components/ContactModal'));
+const PrivacyModal = lazy(() => import('@/components/PrivacyModal'));
 const Home = lazy(() => import('@/pages/Home'));
 const About = lazy(() => import('@/pages/About'));
 const Services = lazy(() => import('@/pages/Services'));
@@ -17,17 +18,28 @@ const APP_TEXT = {
   loadingLabel: 'Загрузка страницы',
 };
 
+const appBackground = `${import.meta.env.BASE_URL}background.jpg`;
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const openPrivacyModal = () => setIsPrivacyModalOpen(true);
+  const closePrivacyModal = () => setIsPrivacyModalOpen(false);
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-background">
-        <Header onOpenModal={openModal} />
-        <div className="flex-1">
+      <div
+        className="relative flex min-h-screen flex-col bg-slate-950 bg-cover bg-center bg-no-repeat md:bg-fixed"
+        style={{ backgroundImage: `url("${appBackground}")` }}
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(248,250,252,0.84),rgba(248,250,252,0.72),rgba(248,250,252,0.84))]" />
+        <div className="sticky top-0 z-50">
+          <Header onOpenModal={openModal} />
+        </div>
+        <div className="relative flex-1">
           <Suspense fallback={<div aria-label={APP_TEXT.loadingLabel} className="min-h-[40vh]" />}>
             <Routes>
               <Route path="/" element={<Home onOpenModal={openModal} />} />
@@ -41,10 +53,21 @@ function App() {
             </Routes>
           </Suspense>
         </div>
-        <Footer />
+        <div className="relative z-10">
+          <Footer onOpenPrivacyPolicy={openPrivacyModal} />
+        </div>
         {isModalOpen ? (
           <Suspense fallback={null}>
-            <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+            <ContactModal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              onOpenPrivacyPolicy={openPrivacyModal}
+            />
+          </Suspense>
+        ) : null}
+        {isPrivacyModalOpen ? (
+          <Suspense fallback={null}>
+            <PrivacyModal isOpen={isPrivacyModalOpen} onClose={closePrivacyModal} />
           </Suspense>
         ) : null}
       </div>

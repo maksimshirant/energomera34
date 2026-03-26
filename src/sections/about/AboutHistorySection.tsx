@@ -15,11 +15,11 @@ export const AboutHistorySection: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-8 rounded-3xl border border-border/70 bg-secondary/35 p-6">
+          <div className="mt-8 rounded-3xl border border-border/70 bg-white p-6">
             <h3 className="mb-4 text-lg font-semibold text-foreground">{ABOUT_HISTORY_TEXT.resultTitle}</h3>
             <div className="grid gap-3 sm:grid-cols-2">
               {ABOUT_HISTORY_TEXT.results.map((item) => (
-                <div key={item} className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-medium text-foreground shadow-sm">
+                <div key={item} className="rounded-2xl bg-white px-4 py-3 text-sm font-medium text-foreground shadow-sm">
                   {item}
                 </div>
               ))}

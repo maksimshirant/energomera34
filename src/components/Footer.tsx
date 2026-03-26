@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import Logo from './Logo';
 import { PLACEHOLDERS } from '@/lib/placeholders';
+import { COMPANY_REGISTRATION, PRIVACY_POLICY_TEXT } from '@/lib/privacyPolicy';
 
 const FOOTER_TEXT = {
   description:
@@ -14,11 +15,13 @@ const FOOTER_TEXT = {
     { to: '/contacts', label: 'Контакты' },
   ],
   contactsTitle: 'Контакты',
-  privacy: 'Политика обработки персональных данных',
-  consent: 'Согласие на обработку персональных данных',
 };
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenPrivacyPolicy: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -28,9 +31,9 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="mt-10 border-t border-border/70 bg-white/80 backdrop-blur-sm">
+    <footer className="mt-10 border-t border-border/70 bg-white">
       <div className="section-shell py-12 md:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
+        <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[1.15fr_0.85fr_0.85fr]">
           <div className="max-w-md">
             <Link to="/" onClick={handleLogoClick} className="inline-flex cursor-pointer">
               <Logo />
@@ -39,7 +42,7 @@ export const Footer: React.FC = () => {
 
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-2">
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-1 xl:col-span-2 xl:grid-cols-2">
             <div>
               <h4 className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                 {FOOTER_TEXT.navigationTitle}
@@ -79,24 +82,17 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-border/70 pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-muted-foreground">{PLACEHOLDERS.companyName} © 2026</p>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <Link
-              to="/privacy"
-              onClick={handleNavClick}
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              {FOOTER_TEXT.privacy}
-            </Link>
-            <Link
-              to="/consent"
-              onClick={handleNavClick}
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              {FOOTER_TEXT.consent}
-            </Link>
-          </div>
+        <div className="mt-10 flex flex-col gap-4 border-t border-border/70 pt-6 lg:flex-row lg:items-center lg:justify-between">
+          <p className="text-sm text-muted-foreground">
+            {PLACEHOLDERS.companyName}  © 2026 · ИНН {COMPANY_REGISTRATION.inn} · ОГРН {COMPANY_REGISTRATION.ogrn}
+          </p>
+          <button
+            type="button"
+            onClick={onOpenPrivacyPolicy}
+            className="text-left text-sm text-muted-foreground hover:text-foreground"
+          >
+            {PRIVACY_POLICY_TEXT.shortTitle}
+          </button>
         </div>
       </div>
     </footer>

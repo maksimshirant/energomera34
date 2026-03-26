@@ -12,7 +12,7 @@ const PRICE_PAGE_TEXT = {
   title: 'Прайс',
 };
 
-export const Price: React.FC<PriceProps> = () => {
+export const Price: React.FC<PriceProps> = ({ onOpenModal }) => {
   return (
     <main className="page-shell">
       <Seo
@@ -36,7 +36,7 @@ export const Price: React.FC<PriceProps> = () => {
           <span className="page-breadcrumb-separator">{PRICE_PAGE_TEXT.title}</span>
         </div>
       </div>
-      <PriceContentSection />
+      <PriceContentSection onOpenModal={onOpenModal} />
     </main>
   );
 };

@@ -92,7 +92,7 @@
 
 @layer components {
   .section-shell {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8;
   }
 
   .section-kicker {
@@ -108,7 +108,7 @@
   }
 
   .surface-card {
-    @apply rounded-[24px] border border-border/70 bg-white/80 shadow-[0_18px_60px_-28px_rgba(15,23,42,0.18)] backdrop-blur-sm;
+    @apply rounded-[24px] border border-border/70 bg-white shadow-[0_18px_60px_-28px_rgba(15,23,42,0.18)];
   }
 
   .grid-pattern {
@@ -123,7 +123,7 @@
   }
 
   .page-shell {
-    @apply min-h-screen bg-background;
+    @apply min-h-screen bg-transparent;
   }
 
   .page-section {
@@ -147,7 +147,7 @@
   }
 
   .content-card {
-    @apply rounded-3xl border border-border/70 bg-secondary/35 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)];
+    @apply rounded-3xl border border-border/70 bg-white shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)];
   }
 
   .content-card-white {
@@ -155,6 +155,6 @@
   }
 
   .content-panel {
-    @apply rounded-2xl border border-border/70 bg-white/80;
+    @apply rounded-2xl border border-border/70 bg-white;
   }
 }

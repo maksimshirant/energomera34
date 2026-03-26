@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 type PriceItem = {
   name: string;
@@ -12,6 +13,8 @@ const PRICE_CONTENT_TEXT = {
   repairTab: 'Ремонт оборудования',
   tableName: 'Наименование',
   tablePrice: 'Цена, ₽ (без НДС)',
+  ctaText: 'Не нашли нужную позицию? Свяжитесь с нами и мы поможем с решением вашего вопроса.',
+  ctaButton: 'Задать вопрос',
   verificationSections: [
     {
       title: 'Поверка электромагнитных, ультразвуковых и вихреакустических расходомеров (ПРЭМ, МастерФлоу, ЭРСВ, и др.):',
@@ -84,8 +87,12 @@ const PRICE_CONTENT_TEXT = {
   },
 };
 
+interface PriceContentSectionProps {
+  onOpenModal: () => void;
+}
+
 const PriceTable = ({ items }: { items: PriceItem[] }) => (
-  <div className="content-card overflow-hidden">
+  <div className="content-card overflow-x-auto">
     <table className="w-full">
       <thead>
         <tr className="bg-secondary/70">
@@ -105,16 +112,15 @@ const PriceTable = ({ items }: { items: PriceItem[] }) => (
   </div>
 );
 
-export const PriceContentSection: React.FC = () => {
+export const PriceContentSection: React.FC<PriceContentSectionProps> = ({ onOpenModal }) => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState<'verification' | 'repair'>('verification');
+  const [activeTab, setActiveTab] = useState<'verification' | 'repair'>(
+    location.hash === '#repair' ? 'repair' : 'verification',
+  );
 
   useEffect(() => {
     if (location.hash === '#repair') {
-      setActiveTab('repair');
       window.scrollTo({ top: 0, behavior: 'auto' });
-    } else {
-      setActiveTab('verification');
     }
   }, [location.hash]);
 
@@ -124,13 +130,17 @@ export const PriceContentSection: React.FC = () => {
 
       <div className="mb-8 flex gap-2">
         <button
+          type="button"
           onClick={() => setActiveTab('verification')}
+          aria-pressed={activeTab === 'verification'}
           className={`rounded-xl px-6 py-3 font-medium transition-colors ${activeTab === 'verification' ? 'bg-primary text-primary-foreground' : 'bg-secondary/60 text-foreground hover:bg-secondary'}`}
         >
           {PRICE_CONTENT_TEXT.verificationTab}
         </button>
         <button
+          type="button"
           onClick={() => setActiveTab('repair')}
+          aria-pressed={activeTab === 'repair'}
           className={`rounded-xl px-6 py-3 font-medium transition-colors ${activeTab === 'repair' ? 'bg-primary text-primary-foreground' : 'bg-secondary/60 text-foreground hover:bg-secondary'}`}
         >
           {PRICE_CONTENT_TEXT.repairTab}
@@ -152,6 +162,13 @@ export const PriceContentSection: React.FC = () => {
           <PriceTable items={PRICE_CONTENT_TEXT.repairSection.items} />
         </div>
       )}
+
+      <div className="mt-8 rounded-3xl border border-primary/15 bg-primary/5 p-6 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.12)]">
+        <p className="text-base leading-7 text-foreground md:text-lg">{PRICE_CONTENT_TEXT.ctaText}</p>
+        <Button onClick={onOpenModal} className="mt-5 rounded-xl px-6">
+          {PRICE_CONTENT_TEXT.ctaButton}
+        </Button>
+      </div>
     </section>
   );
 };

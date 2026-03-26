@@ -10,7 +10,7 @@ const HOME_SERVICES_TEXT = {
 
 export const HomeServicesSection: React.FC = () => {
   return (
-    <section className="bg-white py-16">
+    <section className="py-16">
       <div className="section-shell">
         <h2 className="mb-12 text-center text-3xl font-semibold text-foreground md:text-4xl">
           {HOME_SERVICES_TEXT.title}
@@ -19,7 +19,7 @@ export const HomeServicesSection: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`flex flex-col items-center gap-8 overflow-hidden rounded-3xl border border-border/70 bg-secondary/30 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)] ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+              className={`flex flex-col items-center gap-8 overflow-hidden rounded-3xl border border-border/70 bg-white shadow-[0_20px_50px_-35px_rgba(15,23,42,0.18)] ${index % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
             >
               <div className="flex-1 p-8">
                 <h3 className="mb-4 text-xl font-semibold text-foreground md:text-2xl">{service.title}</h3>
@@ -28,7 +28,7 @@ export const HomeServicesSection: React.FC = () => {
                   <Button className="rounded-xl">{HOME_SERVICES_TEXT.cta}</Button>
                 </Link>
               </div>
-              <div className="relative h-64 w-full flex-1 lg:h-80">
+              <div className="relative h-64 w-full flex-1 xl:h-80">
                 <div className={`absolute top-0 z-10 h-full w-24 ${index % 2 === 0 ? 'left-0' : 'right-0'}`}>
                   <svg viewBox="0 0 100 300" className="h-full w-full" preserveAspectRatio="none">
                     <path

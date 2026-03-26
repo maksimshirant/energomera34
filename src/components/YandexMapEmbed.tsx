@@ -20,7 +20,7 @@ export const YandexMapEmbed: React.FC<YandexMapEmbedProps> = ({
   title = `Карта: ${normalizedAddress}`,
 }) => {
   return (
-    <div className={cn('relative overflow-hidden rounded-3xl bg-secondary/35', className)}>
+    <div className={cn('relative overflow-hidden rounded-3xl bg-white', className)}>
       <iframe
         title={title}
         src={mapUrl}

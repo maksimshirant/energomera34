@@ -20,7 +20,7 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
 
   return (
     <section className="page-section">
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
         <div>
           <h1 className="page-title mb-6">{service.title}</h1>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">{service.description}</p>
@@ -68,7 +68,7 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
             {service.extendedInfo.sections.map((section) => (
               <article
                 key={section.title}
-                className="rounded-3xl border border-border/70 bg-secondary/30 p-6 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.14)]"
+                className="rounded-3xl border border-border/70 bg-white p-6 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.14)]"
               >
                 <h2 className="text-2xl font-semibold text-foreground">{section.title}</h2>
                 <p className="mt-4 text-muted-foreground leading-7">{section.description}</p>
@@ -131,37 +131,49 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
 
             <div className="flex justify-center xl:justify-end">
               <div className="w-full max-w-[380px]">
-                <div className="w-full rounded-[28px] border border-border/70 bg-secondary/20 p-4 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.14)]">
+                <div className="w-full rounded-[28px] border border-border/70 bg-white p-4 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.14)]">
                   <button
                     type="button"
                     onClick={() => setTemplatePreviewOpen(true)}
                     className="block w-full text-left"
                   >
-                    <div className="aspect-[210/297] rounded-[22px] border border-border/70 bg-gradient-to-br from-slate-950 via-slate-800 to-cyan-600 p-6 shadow-[0_12px_30px_-20px_rgba(15,23,42,0.16)]">
-                      <div className="flex h-full flex-col">
-                        <div className="border-b border-white/15 pb-4">
-                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/90">
-                            {service.requestTemplate.previewTitle}
-                          </p>
-                          <h2 className="mt-3 text-xl font-semibold text-white">
-                            {service.requestTemplate.previewSubtitle}
-                          </h2>
-                        </div>
+                    {service.requestTemplate.previewImageHref ? (
+                      <img
+                        src={service.requestTemplate.previewImageHref}
+                        alt={service.requestTemplate.previewSubtitle}
+                        width={794}
+                        height={1123}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[210/297] w-full rounded-[22px] border border-border/70 object-cover shadow-[0_12px_30px_-20px_rgba(15,23,42,0.16)]"
+                      />
+                    ) : (
+                      <div className="aspect-[210/297] rounded-[22px] border border-border/70 bg-gradient-to-br from-slate-950 via-slate-800 to-cyan-600 p-6 shadow-[0_12px_30px_-20px_rgba(15,23,42,0.16)]">
+                        <div className="flex h-full flex-col">
+                          <div className="border-b border-white/15 pb-4">
+                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/90">
+                              {service.requestTemplate.previewTitle}
+                            </p>
+                            <h2 className="mt-3 text-xl font-semibold text-white">
+                              {service.requestTemplate.previewSubtitle}
+                            </h2>
+                          </div>
 
-                        <div className="mt-6 flex-1 space-y-4">
-                          {service.requestTemplate.previewFields.map((field) => (
-                            <div key={field}>
-                              <p className="mb-2 text-xs uppercase tracking-[0.14em] text-white/70">{field}</p>
-                              <div className="h-8 rounded-none border-b border-dashed border-white/35" />
-                            </div>
-                          ))}
-                        </div>
+                          <div className="mt-6 flex-1 space-y-4">
+                            {service.requestTemplate.previewFields.map((field) => (
+                              <div key={field}>
+                                <p className="mb-2 text-xs uppercase tracking-[0.14em] text-white/70">{field}</p>
+                                <div className="h-8 rounded-none border-b border-dashed border-white/35" />
+                              </div>
+                            ))}
+                          </div>
 
-                        <div className="mt-6 border-t border-white/15 pt-4">
-                          <div className="h-8 w-2/3 rounded-none border-b border-dashed border-white/35" />
+                          <div className="mt-6 border-t border-white/15 pt-4">
+                            <div className="h-8 w-2/3 rounded-none border-b border-dashed border-white/35" />
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </button>
                 </div>
                 <a
@@ -191,32 +203,46 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
                   <X className="h-4 w-4" />
                 </button>
               </div>
-              <div className="m-4 rounded-2xl bg-gradient-to-br from-slate-950 via-slate-800 to-cyan-600 p-8">
-                <div className="mx-auto max-w-[560px] rounded-[26px] border border-white/15 bg-white/8 p-6 backdrop-blur-sm">
-                  <div className="aspect-[210/297] rounded-[20px] border border-white/15 bg-white/6 p-8">
-                    <div className="flex h-full flex-col">
-                      <div className="border-b border-white/15 pb-5">
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/90">
-                          {service.requestTemplate.previewTitle}
-                        </p>
-                        <h3 className="mt-3 text-2xl font-semibold text-white">
-                          {service.requestTemplate.previewSubtitle}
-                        </h3>
-                      </div>
-                      <div className="mt-7 flex-1 space-y-5">
-                        {service.requestTemplate.previewFields.map((field) => (
-                          <div key={field}>
-                            <p className="mb-2 text-xs uppercase tracking-[0.14em] text-white/70">{field}</p>
-                            <div className="h-10 border-b border-dashed border-white/35" />
+              <div className="m-4">
+                {service.requestTemplate.previewImageHref ? (
+                  <img
+                    src={service.requestTemplate.previewImageHref}
+                    alt={service.requestTemplate.previewSubtitle}
+                    width={794}
+                    height={1123}
+                    loading="lazy"
+                    decoding="async"
+                    className="mx-auto max-h-[80vh] w-full rounded-2xl border border-border/70 object-contain"
+                  />
+                ) : (
+                  <div className="rounded-2xl bg-gradient-to-br from-slate-950 via-slate-800 to-cyan-600 p-8">
+                    <div className="mx-auto max-w-[560px] rounded-[26px] border border-white/15 bg-white/8 p-6 backdrop-blur-sm">
+                      <div className="aspect-[210/297] rounded-[20px] border border-white/15 bg-white/6 p-8">
+                        <div className="flex h-full flex-col">
+                          <div className="border-b border-white/15 pb-5">
+                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/90">
+                              {service.requestTemplate.previewTitle}
+                            </p>
+                            <h3 className="mt-3 text-2xl font-semibold text-white">
+                              {service.requestTemplate.previewSubtitle}
+                            </h3>
                           </div>
-                        ))}
-                      </div>
-                      <div className="mt-7 border-t border-white/15 pt-5">
-                        <div className="h-10 w-2/3 border-b border-dashed border-white/35" />
+                          <div className="mt-7 flex-1 space-y-5">
+                            {service.requestTemplate.previewFields.map((field) => (
+                              <div key={field}>
+                                <p className="mb-2 text-xs uppercase tracking-[0.14em] text-white/70">{field}</p>
+                                <div className="h-10 border-b border-dashed border-white/35" />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-7 border-t border-white/15 pt-5">
+                            <div className="h-10 w-2/3 border-b border-dashed border-white/35" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ) : null}

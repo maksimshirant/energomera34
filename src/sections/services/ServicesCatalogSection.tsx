@@ -21,7 +21,7 @@ export const ServicesCatalogSection: React.FC<ServicesCatalogSectionProps> = ({ 
         {services.map((service, index) => (
           <div
             key={service.id}
-            className={`content-card flex flex-col items-center gap-8 overflow-hidden ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+            className={`content-card flex flex-col items-center gap-8 overflow-hidden ${index % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
           >
             <div className="flex-1 p-8">
               <h3 className="mb-4 text-xl font-semibold text-foreground md:text-2xl">{service.title}</h3>
@@ -36,7 +36,7 @@ export const ServicesCatalogSection: React.FC<ServicesCatalogSectionProps> = ({ 
               </div>
             </div>
 
-            <div className="relative h-64 w-full flex-1 lg:h-80">
+            <div className="relative h-64 w-full flex-1 xl:h-80">
               <div className={`absolute top-0 z-10 h-full w-24 ${index % 2 === 0 ? 'left-0' : 'right-0'}`}>
                 <svg viewBox="0 0 100 300" className="h-full w-full" preserveAspectRatio="none">
                   <path
