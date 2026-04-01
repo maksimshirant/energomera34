@@ -4,45 +4,32 @@ import { ABOUT_HISTORY_TEXT } from '@/content/about';
 export const AboutHistorySection: React.FC = () => {
   return (
     <section>
-      <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="content-card p-8 md:p-10">
+      <div className="content-card p-8 md:p-10 lg:p-12">
+        <div className="max-w-5xl">
           <h2 className="mb-6 text-2xl font-semibold text-foreground md:text-3xl">{ABOUT_HISTORY_TEXT.title}</h2>
-          <div className="space-y-4 text-muted-foreground">
+          <div className="max-w-4xl space-y-4 text-base leading-7 text-muted-foreground md:text-lg">
             {ABOUT_HISTORY_TEXT.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="leading-7">
+              <p key={paragraph}>
                 {paragraph}
               </p>
             ))}
           </div>
 
-          <div className="mt-8 rounded-3xl border border-border/70 bg-white p-6">
-            <h3 className="mb-4 text-lg font-semibold text-foreground">{ABOUT_HISTORY_TEXT.resultTitle}</h3>
-            <div className="grid gap-3 sm:grid-cols-2">
+          <div className="mt-10 border-t border-border/70 pt-8">
+            <h3 className="max-w-4xl text-lg font-semibold leading-8 text-foreground md:text-xl">
+              {ABOUT_HISTORY_TEXT.resultTitle}
+            </h3>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {ABOUT_HISTORY_TEXT.results.map((item) => (
-                <div key={item} className="rounded-2xl bg-white px-4 py-3 text-sm font-medium text-foreground shadow-sm">
-                  {item}
+                <div
+                  key={item}
+                  className="flex min-h-[88px] items-start gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-4 text-sm font-medium leading-6 text-foreground"
+                >
+                  <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-primary" />
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className="content-card-white overflow-hidden p-0">
-          <div className="flex min-h-[420px] h-full items-end bg-[linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.94),rgba(34,211,238,0.65))] p-8">
-            <div>
-              <p className="mb-3 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80">
-                {ABOUT_HISTORY_TEXT.imageAlt}
-              </p>
-              <h3 className="max-w-sm text-2xl font-semibold text-white md:text-3xl">
-                {ABOUT_HISTORY_TEXT.visualTitle}
-              </h3>
-              <p className="mt-3 max-w-md text-sm leading-6 text-white/80">
-                {ABOUT_HISTORY_TEXT.visualSubtitle}
-              </p>
-            </div>
-          </div>
-          <div className="border-t border-border/60 px-5 py-4 text-sm text-muted-foreground">
-            {ABOUT_HISTORY_TEXT.imageCaption}
           </div>
         </div>
       </div>

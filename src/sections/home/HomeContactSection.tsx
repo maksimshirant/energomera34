@@ -11,7 +11,7 @@ const HOME_CONTACT_TEXT = {
   emailLabel: 'Отправить вопрос на почту',
   addressLabel: 'Адрес компании',
   scheduleLabel: 'График работы',
-  scheduleValue: 'Пн-Пт с 08:00 до 17:00, Выходные дни: суббота, воскресенье',
+  scheduleValue: 'Пн-Пт с 08:30 до 17:00, обед с 12:30 до 13:00, выходные дни: суббота, воскресенье',
 };
 
 export const HomeContactSection: React.FC = () => {

@@ -147,25 +147,31 @@ export const AboutCertificatesSection: React.FC = () => {
       </div>
 
       <Dialog open={selectedIndex !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
-        <DialogContent className="max-w-4xl border border-border/70 bg-white/95 p-0" showCloseButton={false}>
+        <DialogContent
+          className="left-1/2 top-1/2 h-[100dvh] w-[100dvw] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-none border-0 bg-slate-950/92 p-0"
+          showCloseButton={false}
+        >
           {selectedIndex !== null && (
-            <div>
-              <div className="flex items-center justify-between border-b border-border/60 px-5 py-4">
-                <h3 className="font-medium text-foreground">{ABOUT_CERTIFICATES[selectedIndex].name}</h3>
+            <div className="flex h-full w-full items-center justify-center p-4 md:p-8">
+              <div className="relative flex h-full max-h-full w-auto max-w-full shrink-0 items-center justify-center">
                 <button
                   type="button"
                   onClick={() => setSelectedIndex(null)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-white text-foreground transition-colors hover:text-primary"
+                  className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-slate-950/45 text-white backdrop-blur-sm transition-colors hover:bg-slate-950/65 md:right-4 md:top-4"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-5 w-5" />
                 </button>
-              </div>
-              <div className={`m-4 flex min-h-[70vh] items-end rounded-2xl bg-gradient-to-br ${ABOUT_CERTIFICATES[selectedIndex].gradientClass} p-8`}>
-                <div>
-                  <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80">
-                    Документ
-                  </span>
-                  <h3 className="mt-4 text-3xl font-semibold text-white">{ABOUT_CERTIFICATES[selectedIndex].name}</h3>
+                <div
+                  className={`flex w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] shrink-0 aspect-[210/297] items-end justify-start overflow-hidden rounded-2xl bg-gradient-to-br ${ABOUT_CERTIFICATES[selectedIndex].gradientClass} p-6 md:h-full md:max-h-full md:w-auto md:max-w-full md:p-12`}
+                >
+                  <div>
+                    <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80">
+                      Документ
+                    </span>
+                    <h3 className="mt-4 text-3xl font-semibold text-white md:text-4xl">
+                      {ABOUT_CERTIFICATES[selectedIndex].name}
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>
