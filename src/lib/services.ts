@@ -107,8 +107,8 @@ export const services: ServiceItem[] = [
       priceLinkLabel: 'Прайс',
       priceTextAfterLink: '.',
       priceLinkHref: '/price#repair',
-      ctaText: 'Остались еще вопросы? Оставьте заявку и мы свяжемся с вами.',
-      ctaButtonLabel: 'Оставить заявку',
+      ctaText: 'Остались вопросы? Свяжитесь с нами, и мы подскажем подходящее решение.',
+      ctaButtonLabel: 'Связаться с нами',
       previewTitle: 'Шаблон заявки',
       previewSubtitle: 'Поверка или ремонт средства измерений',
       previewFields: [

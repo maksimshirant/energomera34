@@ -10,11 +10,7 @@ const ABOUT_PAGE_TEXT = {
   title: 'О компании',
 };
 
-interface AboutProps {
-  onOpenModal: () => void;
-}
-
-export const About: React.FC<AboutProps> = () => {
+export const About: React.FC = () => {
   return (
     <main className="page-shell">
       <Seo

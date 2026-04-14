@@ -5,16 +5,12 @@ import { buildBreadcrumbSchema, buildServiceSchema } from '@/lib/seo';
 import ServiceDetailSection from '@/sections/services/ServiceDetailSection';
 import { getServiceBySlug } from '@/lib/services';
 
-interface ServiceDetailProps {
-  onOpenModal: () => void;
-}
-
 const SERVICE_DETAIL_PAGE_TEXT = {
   home: 'Главная',
   services: 'Услуги',
 };
 
-export const ServiceDetail: React.FC<ServiceDetailProps> = ({ onOpenModal }) => {
+export const ServiceDetail: React.FC = () => {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
 
@@ -57,7 +53,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ onOpenModal }) => 
           <span className="page-breadcrumb-separator">{service.title}</span>
         </div>
       </div>
-      <ServiceDetailSection service={service} onOpenModal={onOpenModal} />
+      <ServiceDetailSection service={service} />
     </main>
   );
 };

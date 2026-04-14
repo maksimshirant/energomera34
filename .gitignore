@@ -1,8 +1,13 @@
 node_modules
 dist
 .DS_Store
+**/.DS_Store
 .vite
 *.log
 .env
 .env.local
 .env.*.local
+.vscode/
+.cursorignore
+info.md
+*.tsbuildinfo

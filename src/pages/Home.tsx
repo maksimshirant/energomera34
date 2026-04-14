@@ -7,11 +7,7 @@ import HomeContactSection from '@/sections/home/HomeContactSection';
 import HomeHeroSection from '@/sections/home/HomeHeroSection';
 import HomeServicesSection from '@/sections/home/HomeServicesSection';
 
-interface HomeProps {
-  onOpenModal: () => void;
-}
-
-export const Home: React.FC<HomeProps> = ({ onOpenModal }) => {
+export const Home: React.FC = () => {
   return (
     <main>
       <Seo
@@ -21,7 +17,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenModal }) => {
         keywords={[...DEFAULT_SEO.keywords]}
         structuredData={[buildOrganizationSchema(), buildServiceListSchema(services)]}
       />
-      <HomeHeroSection onOpenModal={onOpenModal} />
+      <HomeHeroSection />
       <HomeAboutHighlightsSection />
       <HomeServicesSection />
       <HomeContactSection />

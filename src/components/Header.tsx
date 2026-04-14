@@ -10,7 +10,7 @@ const HEADER_TEXT = {
   services: 'Услуги',
   price: 'Прайс',
   contacts: 'Контакты',
-  request: 'Оставить заявку',
+  request: 'Связаться с нами',
   openMenu: 'Открыть меню',
   closeMenu: 'Закрыть меню',
   callAria: (phone: string) => `Позвонить ${phone}`,
@@ -22,11 +22,7 @@ const HEADER_TEXT = {
   ],
 };
 
-interface HeaderProps {
-  onOpenModal: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
+export const Header: React.FC = () => {
   const location = useLocation();
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -42,11 +38,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   const handleMobileNavClick = () => {
     setMobileOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleRequestClick = () => {
-    setMobileOpen(false);
-    onOpenModal();
   };
 
   return (
@@ -200,13 +191,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
                   {item.label}
                 </Link>
               ))}
-              <button
-                type="button"
-                onClick={handleRequestClick}
+              <a
+                href={`tel:${PLACEHOLDERS.phoneLink}`}
+                onClick={handleMobileNavClick}
                 className="mt-3 rounded-2xl bg-primary px-5 py-4 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                aria-label={HEADER_TEXT.callAria(PLACEHOLDERS.phoneDisplay)}
               >
                 {HEADER_TEXT.request}
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -5,16 +5,12 @@ import { buildBreadcrumbSchema, buildServiceListSchema } from '@/lib/seo';
 import { services } from '@/lib/services';
 import ServicesCatalogSection from '@/sections/services/ServicesCatalogSection';
 
-interface ServicesProps {
-  onOpenModal: () => void;
-}
-
 const SERVICES_PAGE_TEXT = {
   home: 'Главная',
   title: 'Услуги',
 };
 
-export const Services: React.FC<ServicesProps> = ({ onOpenModal }) => {
+export const Services: React.FC = () => {
   return (
     <main className="page-shell">
       <Seo
@@ -42,7 +38,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenModal }) => {
           <span className="page-breadcrumb-separator">{SERVICES_PAGE_TEXT.title}</span>
         </div>
       </div>
-      <ServicesCatalogSection onOpenModal={onOpenModal} />
+      <ServicesCatalogSection />
     </main>
   );
 };

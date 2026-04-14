@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import hero1Image from '@/assets/optimized/hero1.jpg';
 import hero2Image from '@/assets/optimized/hero2.jpg';
-
-interface HomeHeroSectionProps {
-  onOpenModal: () => void;
-}
+import { PLACEHOLDERS } from '@/lib/placeholders';
 
 const HOME_HERO_TEXT = {
-  cta: 'Оставить заявку',
+  cta: 'Связаться с нами',
   services: 'Перейти к услугам',
 };
 
@@ -29,7 +26,7 @@ const slides = [
   },
 ];
 
-export const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ onOpenModal }) => {
+export const HomeHeroSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -79,8 +76,10 @@ export const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ onOpenModal })
             {slides[currentSlide].subtitle}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button onClick={onOpenModal} className="h-12 rounded-xl px-8 text-base">
-              {HOME_HERO_TEXT.cta}
+            <Button asChild className="h-12 rounded-xl px-8 text-base">
+              <a href={`tel:${PLACEHOLDERS.phoneLink}`} aria-label={`Позвонить ${PLACEHOLDERS.phoneDisplay}`}>
+                {HOME_HERO_TEXT.cta}
+              </a>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-xl border-white/20 bg-white/10 px-8 text-base text-white hover:bg-white/20 hover:text-white">
               <Link to="/services">{HOME_HERO_TEXT.services}</Link>

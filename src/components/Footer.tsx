@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import Logo from './Logo';
 import { PLACEHOLDERS } from '@/lib/placeholders';
-import { COMPANY_REGISTRATION, PRIVACY_POLICY_TEXT } from '@/lib/privacyPolicy';
+import { COMPANY_REGISTRATION } from '@/lib/privacyPolicy';
 
 const FOOTER_TEXT = {
   description:
@@ -17,11 +17,7 @@ const FOOTER_TEXT = {
   contactsTitle: 'Контакты',
 };
 
-interface FooterProps {
-  onOpenPrivacyPolicy: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
+export const Footer: React.FC = () => {
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -86,13 +82,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
           <p className="text-sm text-muted-foreground">
             {PLACEHOLDERS.companyName}  © 2026 · ИНН {COMPANY_REGISTRATION.inn} · ОГРН {COMPANY_REGISTRATION.ogrn}
           </p>
-          <button
-            type="button"
-            onClick={onOpenPrivacyPolicy}
-            className="text-left text-sm text-muted-foreground hover:text-foreground"
-          >
-            {PRIVACY_POLICY_TEXT.shortTitle}
-          </button>
         </div>
       </div>
     </footer>

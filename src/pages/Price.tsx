@@ -3,16 +3,12 @@ import Seo from '@/components/Seo';
 import { buildBreadcrumbSchema } from '@/lib/seo';
 import PriceContentSection from '@/sections/price/PriceContentSection';
 
-interface PriceProps {
-  onOpenModal: () => void;
-}
-
 const PRICE_PAGE_TEXT = {
   home: 'Главная',
   title: 'Прайс',
 };
 
-export const Price: React.FC<PriceProps> = ({ onOpenModal }) => {
+export const Price: React.FC = () => {
   return (
     <main className="page-shell">
       <Seo
@@ -36,7 +32,7 @@ export const Price: React.FC<PriceProps> = ({ onOpenModal }) => {
           <span className="page-breadcrumb-separator">{PRICE_PAGE_TEXT.title}</span>
         </div>
       </div>
-      <PriceContentSection onOpenModal={onOpenModal} />
+      <PriceContentSection />
     </main>
   );
 };

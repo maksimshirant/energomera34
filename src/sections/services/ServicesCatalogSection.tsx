@@ -2,18 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { services } from '@/lib/services';
-
-interface ServicesCatalogSectionProps {
-  onOpenModal: () => void;
-}
+import { PLACEHOLDERS } from '@/lib/placeholders';
 
 const SERVICES_CATALOG_TEXT = {
   title: 'Услуги',
   details: 'Подробнее',
-  request: 'Оставить заявку',
+  request: 'Связаться с нами',
 };
 
-export const ServicesCatalogSection: React.FC<ServicesCatalogSectionProps> = ({ onOpenModal }) => {
+export const ServicesCatalogSection: React.FC = () => {
   return (
     <section className="page-section">
       <h1 className="page-title mb-12">{SERVICES_CATALOG_TEXT.title}</h1>
@@ -30,8 +27,10 @@ export const ServicesCatalogSection: React.FC<ServicesCatalogSectionProps> = ({ 
                 <Link to={`/services/${service.slug}`}>
                   <Button className="rounded-xl">{SERVICES_CATALOG_TEXT.details}</Button>
                 </Link>
-                <Button onClick={onOpenModal} variant="outline" className="rounded-xl">
-                  {SERVICES_CATALOG_TEXT.request}
+                <Button asChild variant="outline" className="rounded-xl">
+                  <a href={`tel:${PLACEHOLDERS.phoneLink}`} aria-label={`Позвонить ${PLACEHOLDERS.phoneDisplay}`}>
+                    {SERVICES_CATALOG_TEXT.request}
+                  </a>
                 </Button>
               </div>
             </div>

@@ -4,18 +4,18 @@ import { X } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import type { ServiceItem } from '@/lib/services';
+import { PLACEHOLDERS } from '@/lib/placeholders';
 
 interface ServiceDetailSectionProps {
   service: ServiceItem;
-  onOpenModal: () => void;
 }
 
 const SERVICE_DETAIL_TEXT = {
-  request: 'Оставить заявку',
+  request: 'Связаться с нами',
   allServices: 'Все услуги',
 };
 
-export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ service, onOpenModal }) => {
+export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ service }) => {
   const [templatePreviewOpen, setTemplatePreviewOpen] = useState(false);
 
   return (
@@ -33,8 +33,10 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
             ))}
           </div>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button onClick={onOpenModal} className="rounded-xl px-7">
-              {SERVICE_DETAIL_TEXT.request}
+            <Button asChild className="rounded-xl px-7">
+              <a href={`tel:${PLACEHOLDERS.phoneLink}`} aria-label={`Позвонить ${PLACEHOLDERS.phoneDisplay}`}>
+                {SERVICE_DETAIL_TEXT.request}
+              </a>
             </Button>
             <Link
               to="/services"
@@ -123,8 +125,10 @@ export const ServiceDetailSection: React.FC<ServiceDetailSectionProps> = ({ serv
                 <p className="text-base font-medium leading-7 text-foreground md:text-lg">
                   {service.requestTemplate.ctaText}
                 </p>
-                <Button onClick={onOpenModal} className="mt-5 rounded-xl px-6">
-                  {service.requestTemplate.ctaButtonLabel}
+                <Button asChild className="mt-5 rounded-xl px-6">
+                  <a href={`tel:${PLACEHOLDERS.phoneLink}`} aria-label={`Позвонить ${PLACEHOLDERS.phoneDisplay}`}>
+                    {service.requestTemplate.ctaButtonLabel}
+                  </a>
                 </Button>
               </div>
             </div>

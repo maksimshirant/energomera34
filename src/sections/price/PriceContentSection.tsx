@@ -1,21 +1,18 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { PLACEHOLDERS } from '@/lib/placeholders';
 
 const PRICE_CONTENT_TEXT = {
   title: 'Прайс',
   status: 'Раздел обновляется',
   placeholderTitle: 'Обновленный прайс скоро на сайте',
   placeholderText:
-    'Мы актуализируем перечень услуг и стоимость, чтобы разместить на странице только точную и актуальную информацию. Уточнить цену уже сейчас можно по телефону или через форму обратной связи.',
-  ctaText: 'Не нашли нужную позицию? Свяжитесь с нами и мы поможем с решением вашего вопроса.',
-  ctaButton: 'Задать вопрос',
+    'Мы актуализируем перечень услуг и стоимость, чтобы разместить на странице только точную и актуальную информацию. Уточнить цену уже сейчас можно, если свяжетесь с нами по телефону или электронной почте.',
+  ctaText: 'Не нашли нужную позицию? Свяжитесь с нами, и мы поможем с решением вашего вопроса.',
+  ctaButton: 'Связаться с нами',
 };
 
-interface PriceContentSectionProps {
-  onOpenModal: () => void;
-}
-
-export const PriceContentSection: React.FC<PriceContentSectionProps> = ({ onOpenModal }) => {
+export const PriceContentSection: React.FC = () => {
   return (
     <section className="page-section">
       <h1 className="page-title mb-8">{PRICE_CONTENT_TEXT.title}</h1>
@@ -40,8 +37,10 @@ export const PriceContentSection: React.FC<PriceContentSectionProps> = ({ onOpen
 
       <div className="mt-8 rounded-3xl border border-primary/15 bg-primary/5 p-6 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.12)]">
         <p className="text-base leading-7 text-foreground md:text-lg">{PRICE_CONTENT_TEXT.ctaText}</p>
-        <Button onClick={onOpenModal} className="mt-5 rounded-xl px-6">
-          {PRICE_CONTENT_TEXT.ctaButton}
+        <Button asChild className="mt-5 rounded-xl px-6">
+          <a href={`tel:${PLACEHOLDERS.phoneLink}`} aria-label={`Позвонить ${PLACEHOLDERS.phoneDisplay}`}>
+            {PRICE_CONTENT_TEXT.ctaButton}
+          </a>
         </Button>
       </div>
     </section>
