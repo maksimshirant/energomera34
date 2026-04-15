@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { MODAL_SHELL_CLASSNAME } from '@/components/modalShell';
 import { sendForm } from '@/api/forms';
+import { PLACEHOLDERS } from '@/lib/placeholders';
 
 const CONTACT_MODAL_TEXT = {
   title: 'Оставьте заявку',
@@ -24,8 +25,6 @@ const CONTACT_MODAL_TEXT = {
   submitLoading: 'Отправляем заявку...',
   success: 'Ваша заявка успешно отправлена, мы вскоре свяжемся с вами!',
   messageFallback: 'Без дополнительного комментария',
-  subject: 'Новая заявка с сайта Энергомера34',
-  fromName: 'Сайт Энергомера34',
   nameError: 'Укажите имя',
   phoneError: 'Введите номер в формате +7 (999) 999-99-99',
   phoneTitle: 'Формат: +7 (999) 999-99-99',
@@ -144,14 +143,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
       return;
     }
 
-    const payload = new FormData();
-    payload.append('subject', CONTACT_MODAL_TEXT.subject);
-    payload.append('from_name', CONTACT_MODAL_TEXT.fromName);
-    payload.append('message', [
-      `Имя: ${formData.name.trim()}`,
-      `Телефон: ${formData.phone}`,
-      `Сообщение: ${formData.message.trim() || CONTACT_MODAL_TEXT.messageFallback}`,
-    ].join('\n'));
+    const payload = {
+      name: formData.name.trim(),
+      phone: formData.phone,
+      message: formData.message.trim() || CONTACT_MODAL_TEXT.messageFallback,
+      consentToPrivacy: formData.agree,
+      pageUrl: typeof window !== 'undefined' ? window.location.href : PLACEHOLDERS.website,
+      submittedAt: new Date().toISOString(),
+      source: 'contact-modal',
+    };
 
     setIsSubmitting(true);
 

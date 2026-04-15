@@ -20,7 +20,7 @@ export const PLACEHOLDERS = {
   director: 'Коробов Илья Александрович',
   website: 'https://energomera34.ru/',
   websiteDisplay: 'energomera34.ru',
-  privacyUrl: 'https://energomera34.ru/#/privacy',
+  privacyUrl: 'https://energomera34.ru/privacy',
   telegramUrl: 'https://t.me/placeholder',
   whatsappUrl: 'https://wa.me/70000000000',
   mapPlaceholder: 'Карта и точный адрес будут добавлены позже',

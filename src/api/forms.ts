@@ -1,8 +1,16 @@
-const DEFAULT_ENDPOINT = 'https://api.web3forms.com/submit';
+const CONTACT_FORM_ENDPOINT_ENV = 'VITE_CONTACT_FORM_ENDPOINT';
 
-const resolveEndpoint = () => import.meta.env.VITE_FORMS_ENDPOINT || DEFAULT_ENDPOINT;
+const resolveEndpoint = () => import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim();
 
-const resolveKey = () => import.meta.env.VITE_WEB3FORMS_KEY?.trim();
+export type ContactFormPayload = {
+  name: string;
+  phone: string;
+  message: string;
+  consentToPrivacy: boolean;
+  pageUrl: string;
+  submittedAt: string;
+  source: string;
+};
 
 type SendFormResult = {
   ok: boolean;
@@ -12,26 +20,23 @@ type SendFormResult = {
   message?: string;
 };
 
-export const sendForm = async (formData: FormData): Promise<SendFormResult> => {
-  const accessKey = resolveKey();
+export const sendForm = async (payload: ContactFormPayload): Promise<SendFormResult> => {
+  const endpoint = resolveEndpoint();
 
-  if (!accessKey) {
+  if (!endpoint) {
     return {
       ok: false,
-      error: 'missing_key',
-      message: 'VITE_WEB3FORMS_KEY не найден в .env (перезапустите dev-сервер)',
+      error: 'missing_endpoint',
+      message: `${CONTACT_FORM_ENDPOINT_ENV} не найден в .env (перезапустите dev-сервер)`,
     };
   }
 
-  if (!formData.has('access_key')) {
-    formData.append('access_key', accessKey);
-  }
-
-  const endpoint = resolveEndpoint();
-
   const response = await fetch(endpoint, {
     method: 'POST',
-    body: formData,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
   });
 
   let data: Record<string, unknown> = {};

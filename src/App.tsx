@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { HashRouter as Router, Navigate, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -9,6 +9,7 @@ const Services = lazy(() => import('@/pages/Services'));
 const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'));
 const Price = lazy(() => import('@/pages/Price'));
 const Contacts = lazy(() => import('@/pages/Contacts'));
+const Privacy = lazy(() => import('@/pages/Privacy'));
 const Consent = lazy(() => import('@/pages/Consent'));
 
 const APP_TEXT = {
@@ -37,7 +38,7 @@ function App() {
               <Route path="/services/:slug" element={<ServiceDetail />} />
               <Route path="/price" element={<Price />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/privacy" element={<Navigate to="/contacts" replace />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="/consent" element={<Consent />} />
             </Routes>
           </Suspense>
